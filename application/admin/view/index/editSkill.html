@@ -1,0 +1,82 @@
+{extend name="layout/base" /} {block name="main"}
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">项目负责人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="leader" required value="{$info.leader}"  placeholder="请输入姓名" autocomplete="off" class="layui-input" style="width: 300px">
+                </div><br />
+                <label class="layui-form-label">所属学校</label>
+                <div class="layui-input-block">
+                    <input type="text" name="school_name" required value="{$info.school_name}" placeholder="请输入所属学校" autocomplete="off" class="layui-input" style="width: 300px">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">一级目录</label>
+                <div class="layui-input-block">
+                    <input type="text" name="first_cate" required value="{$info.first_cate}" placeholder="请输入一级目录" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">二级目录</label>
+                <div class="layui-input-block">
+                    <input type="text" name="second_cate" required value="{$info.second_cate}" placeholder="请输入二级目录" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">三级目录</label>
+                <div class="layui-input-block">
+                    <input type="text" name="third_cate" required value="{$info.third_cate}"  placeholder="请输入三级目录" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">技术名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" required value="{$info.name}" placeholder="请输入技术名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">合作形式</label>
+                <div class="layui-input-block">
+                    <input type="text" name="type" required value="{$info.type}" placeholder="请输入合作形式" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">技术介绍</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 250px" name="description" placeholder="请输入技术介绍" class="layui-textarea">{$info.description}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn">立即提交</button>
+                <input type="hidden" name="id" value="{$info.id}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.layui-btn').on('click',function () {
+        var sendData = {
+            'id':$('input[name="id"]').val(),
+            'name': $('input[name="name"]').val(),
+            'school_name': $('input[name="school_name"]').val(),
+            'leader':$('input[name="leader"]').val(),
+            'first_cate':$('input[name="first_cate"]').val(),
+            'second_cate':$('input[name="second_cate"]').val(),
+            'third_cate':$('input[name="third_cate"]').val(),
+            'type':$('input[name="type"]').val(),
+            'description':$('textarea[name="description"]').val()
+        }
+        $.post('/admin.php/Skill/edit',sendData,function(res){
+            layer.msg(res.msg)
+            history.go(-1)
+        });
+    })
+</script>
+
+{/block}

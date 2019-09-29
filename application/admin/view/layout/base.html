@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{include file="layout/meta" /}
+</head>
+<body data-type="index">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {include file="layout/admin-header" /}
+        {include file="widget/admin-left" /}
+        <div class="layui-layout layui-layout-admin">
+            {block name="main"}
+            {/block}
+            {include file="layout/admin-footer" /}
+        </div>
+    </div>
+{include file="layout/footer" /}
+{block name="footer"}{/block}
+</body>
+</html>

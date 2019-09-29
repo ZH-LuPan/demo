@@ -1,0 +1,46 @@
+{extend name="layout/passport" /} {block name="main"}
+<!--<script src="__ADMIN_STATIC__/css/login.css"></script>-->
+<div class="tpl-login">
+    <div class="tpl-login-content">
+        <div class="tpl-login-logo">
+        </div>
+        <form class="am-form tpl-form-line-form" method="post" data-am-validator>
+            <div class="layui-inline">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="account" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="layui-inline">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="password" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="am-form-group" align="center">
+                <button id="btn" type="button" class="layui-btn layui-btn-normal">登陆</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('#btn').on('click',function(){
+        var sendData = {
+            account : $('input[name="account"]').val(),
+            password : $('input[name="password"]').val()
+        }
+        $.post('/admin.php/User/login',sendData,function (res) {
+            if(res.code == 200){
+                window.location.href = res.data;
+            }else{
+                layer.msg(res.msg,{icon: 2, time: 1000});
+            }
+        })
+
+    })
+</script>
+{/block}

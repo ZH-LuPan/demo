@@ -1,0 +1,84 @@
+---------------------------------------------------------------
+
+[2019-09-29T09:07:54+08:00] 127.0.0.1 GET demo.com/
+[运行时间：0.398610s] [吞吐率：2.51req/s] [内存消耗：2,501.74kb] [文件加载：76]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'uid=1; type=1; name=admin',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'demo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\demo\application\index\view\index\index.html [ array (
+  0 => 'count',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.166747s ] mysql:host=sql.l211.vhostgo.com;port=3306;dbname=123456lupan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `demo_skill` [ RunTime:0.081842s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `demo_skill` WHERE  `status` = 1 [ RunTime:0.080784s ]
+---------------------------------------------------------------
+
+[2019-09-29T09:07:57+08:00] 127.0.0.1 GET demo.com/
+[运行时间：0.324843s] [吞吐率：3.08req/s] [内存消耗：2,375.85kb] [文件加载：74]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'uid=1; type=1; name=admin',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'demo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\demo\application\index\view\index\index.html [ array (
+  0 => 'count',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.118729s ] mysql:host=sql.l211.vhostgo.com;port=3306;dbname=123456lupan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `demo_skill` [ RunTime:0.085792s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `demo_skill` WHERE  `status` = 1 [ RunTime:0.082717s ]
+---------------------------------------------------------------
+
+[2019-09-29T09:08:03+08:00] 127.0.0.1 GET demo.com/
+[运行时间：0.341211s] [吞吐率：2.93req/s] [内存消耗：2,375.85kb] [文件加载：74]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\demo\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'uid=1; type=1; name=admin',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'demo.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpStudy\PHPTutorial\WWW\demo\application\index\view\index\index.html [ array (
+  0 => 'count',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.124900s ] mysql:host=sql.l211.vhostgo.com;port=3306;dbname=123456lupan;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `demo_skill` [ RunTime:0.085395s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `demo_skill` WHERE  `status` = 1 [ RunTime:0.084964s ]

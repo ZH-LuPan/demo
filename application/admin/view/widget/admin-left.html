@@ -1,0 +1,20 @@
+<!-- 侧边导航栏 -->
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree" lay-filter="test">
+        <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+        {foreach $menus as $menu}
+        <li class="layui-nav-item layui-nav-itemed">
+            <a href="{$menu.url}">{$menu.name}</a>
+            {if isset($menu['children'])}
+            <dl class="layui-nav-child">
+                {foreach $menu['children'] as $children}
+                <dd><a href="{$children.url}">{$children.name}</a></dd>
+                {/foreach}
+            </dl>
+            {/if}
+        </li>
+        {/foreach}
+    </ul>
+    </div>
+</div>
