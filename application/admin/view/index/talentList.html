@@ -37,6 +37,9 @@
             </tbody>
         </table>
         <div id="pages"></div>
+        <input type="hidden" id="exportUrl" value="{$exportUrl}">
+        <input type="hidden" id="getUrl" value="{$getUrl}">
+        <input type="hidden" id="delUrl" value="{$delUrl}">
     </div>
 </div>
 <script>
@@ -44,9 +47,10 @@
         var upload = layui.upload;
 
         //执行实例
+        var url = $('#exportUrl').val()
         var uploadInst = upload.render({
             elem: '#test1' //绑定元素
-            , url: '/admin.php/Talent/exportTalentList' //上传接口
+            , url: url //上传接口
             , done: function (res) {
                 //上传完毕回调
                 if (res.code === 200) {
@@ -95,7 +99,8 @@
             'size': fileSize,
             'keyword': $("#keyword").val()
         }
-        $.post('/admin.php/Talent/index', sendData, function (dataList) {
+        var url = $('#getUrl').val()
+        $.post(url, sendData, function (dataList) {
             if(dataList.code){
                 layer.msg(dataList.msg,{'icon':2})
                 return false;
@@ -110,7 +115,8 @@
         var page = filePage;
         var size = fileSize;
         var keyword = $("#keyword").val()
-        $.post('/admin.php/Talent/index', {'page': page, 'size': size,'keyword':keyword}, function (dataList) {
+        var url = $('#getUrl').val()
+        $.post(url, {'page': page, 'size': size,'keyword':keyword}, function (dataList) {
             if (dataList) {
                 randerList(dataList)
                 count = dataList.total;
@@ -146,19 +152,9 @@
         }
     }
 
-    // function doEdit(obj) {
-    //     var This = obj;
-    //     var sendData = {
-    //         'id': This.parents('tr').find('.phone_id').html(),
-    //         'sign': This.parents('tr').find('.sign').val()
-    //     }
-    //     $.post('/admin.php/Skill/edit', sendData, function (res) {
-    //         layer.msg(res.msg);
-    //     })
-    // }
-
     function doDelete(id) {
-        $.post('/admin.php/talent/delete', {'id': id}, function (res) {
+        var url = $('#delUrl').val()
+        $.post(url, {'id': id}, function (res) {
             layer.msg(res.msg);
             getList();
         })

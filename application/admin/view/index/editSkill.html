@@ -54,6 +54,7 @@
             <div class="layui-input-block">
                 <button class="layui-btn">立即提交</button>
                 <input type="hidden" name="id" value="{$info.id}">
+                <input type="hidden" id="editUrl" value="{$editUrl}">
             </div>
         </div>
     </div>
@@ -72,7 +73,8 @@
             'type':$('input[name="type"]').val(),
             'description':$('textarea[name="description"]').val()
         }
-        $.post('/admin.php/Skill/edit',sendData,function(res){
+        var url = $('#editUrl').val()
+        $.post(url,sendData,function(res){
             layer.msg(res.msg)
             history.go(-1)
         });

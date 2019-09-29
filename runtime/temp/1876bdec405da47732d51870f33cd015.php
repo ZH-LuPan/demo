@@ -1,4 +1,4 @@
-<?php /*a:1:{s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\index\view\index\index.html";i:1569719270;}*/ ?>
+<?php /*a:1:{s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\index\view\index\index.html";i:1569744527;}*/ ?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -28,10 +28,16 @@
                        placeholder="请输入关键字" oninput="if(this.value==''){this.type='text'}">
             </div>
             <div class="feature-grids row mt-3 mb-lg-5 mb-3 text-center">
+                <div class="col-lg-4" id="index" style="float: left" onclick="window.location.reload()">
+                    <div class="bottom-gd2-active px-3">
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                        <h3 class="my-4">首页</h3>
+                    </div>
+                </div>
                 <div class="col-lg-4" id="skill">
                     <a>
                     <div class="bottom-gd px-3">
-                        <span class="fa fa-building-o" aria-hidden="true"></span>
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
                         <h3 class="my-4">技术库</h3>
                     </div>
                     </a>
@@ -81,6 +87,8 @@
         </table>
         <div id="pages"></div>
     </div>
+    <input type="hidden" value="<?php echo htmlentities($getSkill); ?>" id="getSkill" />
+    <input type="hidden" value="<?php echo htmlentities($getDetail); ?>" id="detail" />
 </section>
 <script src="/public/assets/layui/layui.all.js"></script>
 <script src="/public/static/admin/js/jquery.min.js"></script>
@@ -98,11 +106,12 @@
     });
     
     $('#loginBtn').on('click',function () {
+        var url = $('#loginUrl').val()
         var sendData = {
             'account' : $('input[name="username"]').val(),
             'password' : $('input[name="password"]').val()
         }
-        $.post('/admin.php/User/login',sendData,function (res) {
+        $.post('/demo/admin.php/User/login',sendData,function (res) {
             if(res.code == 200){
                 window.location.href = res.data;
             }else{

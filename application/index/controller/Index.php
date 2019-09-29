@@ -1,11 +1,9 @@
 <?php
 namespace app\index\controller;
 
-
-
-
 use think\Controller;
 use think\Db;
+use think\facade\Url;
 use think\Request;
 
 class Index extends Controller
@@ -14,9 +12,12 @@ class Index extends Controller
     public function index()
     {
         return $this->fetch('',array(
-            'count' => Db::name('skill')->where('status',1)->count()
+            'count' => Db::name('skill')->where('status',1)->count(),
+            'getSkill' => Url::build('Index/getList'),
+            'getDetail' => Url::build('Index/getDetail')
         ));
     }
+
 
 
     /**
@@ -50,9 +51,25 @@ class Index extends Controller
                 $result['data'][$key]['indexId'] = ($indexId + $key + 1);
             }
             return array('code'=>200,'data'=>$result);
+        }else{
+            return false;
         }
     }
 
+    public function getDetail(Request $request)
+    {
+        $result = array();
+        $id = $request->param('id');
+        $type = $request->param('type');
+        if ($type == 'talent') {
+            $result = Db::name('talent')->where(['status' => 1,'id'=>$id])->find();
+
+        }
+        $template = $request->param('type')=='talent' ? 'index/talentDetail' : 'index/skillDetail';
+        return $this->fetch($template,array(
+            'info' => $result
+        ));
+    }
 
 
 }

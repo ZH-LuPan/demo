@@ -5,6 +5,7 @@ namespace app\admin\controller;
 
 use app\admin\model\Talent as TalentModel;
 use think\Db;
+use think\facade\Url;
 use think\Request;
 
 
@@ -45,7 +46,10 @@ class Talent extends Base
             return $this->handleUserAction($this->paramArr, $this->talentModel, '', 'get');
         }
         return $this->fetch('index/talentList', array(
-            'count' => $this->talentModel->count(['status' => 1])
+            'count' => $this->talentModel->count(['status' => 1]),
+            'exportUrl' => Url::build('Talent/exportTalentList'),
+            'getUrl' => Url::build('Talent/index'),
+            'delUrl' => Url::build('Talent/delete')
         ));
     }
 
@@ -132,7 +136,8 @@ class Talent extends Base
         $id = $request->param('id');
         $info = $this->talentModel->find(['id' => $id]);
         return $this->fetch('index/editTalent', array(
-            'info' => $info
+            'info' => $info,
+            'editUrl' => Url::build('Talent/edit')
         ));
     }
 

@@ -1,6 +1,8 @@
 <?php
 namespace app\admin\controller;
 
+use think\facade\Url;
+
 class Index extends Base
 {
 
@@ -12,7 +14,7 @@ class Index extends Base
     {
         parent::initialize();
         if(!$this->checkLogin()){
-            $this->redirect('/admin.php/User/login');
+            $this->redirect(Url::build('User/login'));
         }
     }
 
@@ -23,7 +25,7 @@ class Index extends Base
      */
      public function index()
      {
-         $this->redirect('User/uList');
+         $this->redirect(Url::build('User/uList'));
      }
 
 

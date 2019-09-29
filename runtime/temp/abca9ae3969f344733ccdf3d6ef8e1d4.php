@@ -1,4 +1,4 @@
-<?php /*a:7:{s:75:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\userList.html";i:1569333770;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1566308938;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1569305954;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1566305884;}*/ ?>
+<?php /*a:7:{s:75:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\userList.html";i:1569727732;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1566308938;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1569741649;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1566305884;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +44,7 @@ var adminApp = {
             <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"><?php echo htmlentities(app('cookie')->get('name')); ?></a>
             <dl class="layui-nav-child">
                 <dd><a href="/admin.php/User/logout">注   销</a></dd>
+                <dd><a href="/index.php">首   页</a></dd>
             </dl>
         </li>
     </ul>
@@ -103,6 +104,9 @@ var adminApp = {
             </tbody>
         </table>
         <div id="pages"></div>
+        <input type="hidden" id="editUrl" value="<?php echo htmlentities($editUrl); ?>">
+        <input type="hidden" id="getUrl" value="<?php echo htmlentities($getUrl); ?>">
+        <input type="hidden" id="delUrl" value="<?php echo htmlentities($delUrl); ?>">
     </div>
 </div>
 <script>
@@ -136,7 +140,8 @@ var adminApp = {
         var page = filePage;
         var size = fileSize;
         var keyword = $("#keyword").val();
-        $.post('/admin.php/User/uList',{'keyword':keyword,'page':page,'size':size},function(dataList){
+        var url = $('#getUrl').val()
+        $.post(url,{'keyword':keyword,'page':page,'size':size},function(dataList){
             if(dataList){
                 randerList(dataList)
             }
@@ -146,7 +151,8 @@ var adminApp = {
     function getList(){
         var page = filePage;
         var size = fileSize;
-        $.post('/admin.php/User/uList',{'page':page,'size':size},function(dataList){
+        var url = $('#getUrl').val()
+        $.post(url,{'page':page,'size':size},function(dataList){
             if(dataList){
                 randerList(dataList)
                 count = dataList.total;
@@ -204,13 +210,15 @@ var adminApp = {
             'password' : This.parents('tr').find('.password').val(),
             'description' : This.parents('tr').find('.sign').val(),
         }
-         $.post('/admin.php/User/edit',sendData,function(res){
+         var url = $('#editUrl').val()
+         $.post(url,sendData,function(res){
               layer.msg(res.msg);
          })
      }
 
      function deleteMobile(id){
-        $.post('/admin.php/User/delete',{'id':id},function (res) {
+         var url = $('#delUrl').val()
+        $.post(url,{'id':id},function (res) {
             layer.msg(res.msg);
             getList();
         })

@@ -23,6 +23,7 @@
             <br />
             <div class="am-form-group" align="center">
                 <button id="btn" type="button" class="layui-btn layui-btn-normal">登陆</button>
+                <input id="loginUrl" type="hidden" value="{$loginUrl}" />
             </div>
         </form>
     </div>
@@ -33,7 +34,8 @@
             account : $('input[name="account"]').val(),
             password : $('input[name="password"]').val()
         }
-        $.post('/admin.php/User/login',sendData,function (res) {
+        var url = $('#loginUrl').val()
+        $.post(url,sendData,function (res) {
             if(res.code == 200){
                 window.location.href = res.data;
             }else{

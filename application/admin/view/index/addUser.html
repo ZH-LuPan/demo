@@ -25,6 +25,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn">立即提交</button>
+                <input type="hidden" value="{$addUserUrl}" id="addUserUrl">
             </div>
         </div>
     </div>
@@ -37,7 +38,8 @@
             'password':$('input[name="password"]').val(),
             'description':$('input[name="description"]').val()
         }
-        $.post('/admin.php/User/addUser',sendData,function(res){
+        var url = $('#addUserUrl').val()
+        $.post(url,sendData,function(res){
             layer.msg(res.msg)
             history.go(-1)
         });

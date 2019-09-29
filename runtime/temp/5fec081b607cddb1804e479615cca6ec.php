@@ -1,4 +1,4 @@
-<?php /*a:7:{s:77:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\talentList.html";i:1569514822;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1566308938;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1569305954;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1566305884;}*/ ?>
+<?php /*a:7:{s:77:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\talentList.html";i:1569727425;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1566308938;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1569305954;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1566305884;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,6 +109,9 @@ var adminApp = {
             </tbody>
         </table>
         <div id="pages"></div>
+        <input type="hidden" id="exportUrl" value="<?php echo htmlentities($exportUrl); ?>">
+        <input type="hidden" id="getUrl" value="<?php echo htmlentities($getUrl); ?>">
+        <input type="hidden" id="delUrl" value="<?php echo htmlentities($delUrl); ?>">
     </div>
 </div>
 <script>
@@ -116,9 +119,10 @@ var adminApp = {
         var upload = layui.upload;
 
         //执行实例
+        var url = $('#exportUrl').val()
         var uploadInst = upload.render({
             elem: '#test1' //绑定元素
-            , url: '/admin.php/Talent/exportTalentList' //上传接口
+            , url: url //上传接口
             , done: function (res) {
                 //上传完毕回调
                 if (res.code === 200) {
@@ -167,7 +171,8 @@ var adminApp = {
             'size': fileSize,
             'keyword': $("#keyword").val()
         }
-        $.post('/admin.php/Talent/index', sendData, function (dataList) {
+        var url = $('#getUrl').val()
+        $.post(url, sendData, function (dataList) {
             if(dataList.code){
                 layer.msg(dataList.msg,{'icon':2})
                 return false;
@@ -182,7 +187,8 @@ var adminApp = {
         var page = filePage;
         var size = fileSize;
         var keyword = $("#keyword").val()
-        $.post('/admin.php/Talent/index', {'page': page, 'size': size,'keyword':keyword}, function (dataList) {
+        var url = $('#getUrl').val()
+        $.post(url, {'page': page, 'size': size,'keyword':keyword}, function (dataList) {
             if (dataList) {
                 randerList(dataList)
                 count = dataList.total;
@@ -218,19 +224,9 @@ var adminApp = {
         }
     }
 
-    // function doEdit(obj) {
-    //     var This = obj;
-    //     var sendData = {
-    //         'id': This.parents('tr').find('.phone_id').html(),
-    //         'sign': This.parents('tr').find('.sign').val()
-    //     }
-    //     $.post('/admin.php/Skill/edit', sendData, function (res) {
-    //         layer.msg(res.msg);
-    //     })
-    // }
-
     function doDelete(id) {
-        $.post('/admin.php/talent/delete', {'id': id}, function (res) {
+        var url = $('#delUrl').val()
+        $.post(url, {'id': id}, function (res) {
             layer.msg(res.msg);
             getList();
         })

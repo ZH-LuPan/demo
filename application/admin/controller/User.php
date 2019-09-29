@@ -7,6 +7,7 @@ use app\common\validate\User as UserValidate;
 use think\Db;
 use think\facade\Cookie;
 use think\facade\Request;
+use think\facade\Url;
 
 
 class User extends Base
@@ -48,7 +49,10 @@ class User extends Base
              return $this->handleUserAction($this->paramArr,$this->userModel,'','get');
          }
          return $this->fetch('index/userList',[
-             'count' => Db::name('user')->where('is_admin',2)->where('status',1)->count()
+             'count' => Db::name('user')->where('is_admin',2)->where('status',1)->count(),
+             'editUrl' => Url::build('User/edit'),
+             'getUrl' => Url::build('User/uList'),
+             'delUrl' => Url::build('User/delete')
          ]);
      }
 
@@ -65,7 +69,9 @@ class User extends Base
              ];
              return $this->handleUserAction($this->paramArr,$this->userModel,$this->userValidate,'login');
          }
-         return $this->fetch('index/login');
+         return $this->fetch('index/login',array(
+             'loginUrl' => Url::build('User/login')
+         ));
      }
 
 
@@ -89,7 +95,9 @@ class User extends Base
         if(Request::isPost()){
             return $this->handleUserAction($this->paramArr,$this->userModel,$this->userValidate,'add');
         }
-        return $this->fetch('index/addUser');
+        return $this->fetch('index/addUser',array(
+            'addUserUrl' => Url::build('User/addUser')
+        ));
     }
 
 

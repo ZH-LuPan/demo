@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use app\admin\model\Skill as SkillModel;
 use think\Db;
+use think\facade\Url;
 use think\Request;
 
 
@@ -44,7 +45,10 @@ class Skill extends Base
             return $this->handleUserAction($this->paramArr, $this->skillModel, '', 'get');
         }
         return $this->fetch('index/skillList', array(
-            'count' => $this->skillModel->count(['status' => 1])
+            'count' => $this->skillModel->count(['status' => 1]),
+            'exportUrl' => Url::build('Skill/exportSkillList'),
+            'getUrl' => Url::build('Skill/index'),
+            'delUrl' => Url::build('Skill/delete')
         ));
     }
 
@@ -136,7 +140,8 @@ class Skill extends Base
         $id = $request->param('id');
         $info = $this->skillModel->find(['id' => $id]);
         return $this->fetch('index/editSkill', array(
-            'info' => $info
+            'info' => $info,
+            'editUrl' => Url::build('Skill/edit')
         ));
     }
 
