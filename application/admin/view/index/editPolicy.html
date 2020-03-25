@@ -1,0 +1,82 @@
+{extend name="layout/base" /} {block name="main"}
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="policy" required value="{$info.name}"  placeholder="请输入政策名称" autocomplete="off" class="layui-input">
+                </div><br />
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">行政区域</label>
+                <div class="layui-input-block">
+                    <input type="text" name="address" required value="{$info.address}"  placeholder="请输入行政区域" autocomplete="off" class="layui-input">
+                </div><br />
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司简介</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 200px" name="description" placeholder="请输入政策简介" class="layui-textarea">{$info.description}</textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">上传附件</label>
+                <button type="button" class="layui-btn" id="upload">
+                    <i class="layui-icon">&#xe67c;</i>上传附件
+                </button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="subBtn" class="layui-btn">立即提交</button>
+                <input type="hidden" name="id" value="{$info.id}">
+                <input type="hidden" id="editUrl" value="{$editUrl}">
+                <input type="hidden" id="uploadUrl" value="{$uploadUrl}">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload'
+            ,url: $('#uploadUrl').val()
+            ,accept: 'file'
+            ,data:{'id':$('input[name="id"]').val()}
+            ,done: function(res){
+                if(res.code === 200){
+                    layer.msg('上传成功',{'icon':1})
+                }
+            }
+            ,error: function(){
+
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $('#subBtn').on('click',function () {
+        var sendData = {
+            'id':$('input[name="id"]').val(),
+            'name': $('input[name="policy"]').val(),
+            'address': $('input[name="address"]').val(),
+            'description':$('textarea[name="description"]').val()
+        }
+        var url = $('#editUrl').val()
+        $.post(url,sendData,function(res){
+            if(res.code === 200){
+                layer.msg(res.msg,{'icon':1})
+                history.go(-1)
+            }else{
+                layer.msg(res.msg,{'icon':2})
+            }
+        });
+    })
+</script>
+
+{/block}

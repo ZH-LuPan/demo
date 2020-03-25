@@ -9,7 +9,9 @@
             </div>
         </div>
         <a id="searchBtn" class="layui-btn layui-btn-warm">搜索</a>
-        <a href="/admin.php/User/addUser" style="float: right" class="layui-btn layui-btn-warm">添加</a>
+        {if $Think.COOKIE.type == 1}
+         <a href="/admin.php/User/addUser" style="float: right" class="layui-btn layui-btn-warm">添加</a>
+        {/if}
         <!--<i style="float: right" class="layui-icon">&#xe669;</i>-->
         <table class="layui-table">
             <colgroup>
@@ -118,10 +120,12 @@
                     '</td>' +
                     '<td>'+data.create_time+'</td>' +
                     '<td> ' +
+                    {if $Think.COOKIE.type == 1}
                     '<div>' +
                     '<a onclick="editMobile($(this));"  class="layui-btn editBtn">修改</a>' +
                     '<a onclick="deleteMobile('+data.id+');"   class="layui-btn layui-btn-danger delBtn">删除</a>' +
                     '</div>' +
+                    {/if}
                     '</td>'+
                     '</tr>'
             })

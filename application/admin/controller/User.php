@@ -81,7 +81,7 @@ class User extends Base
      public function logout()
      {
          Cookie::set('uid',null);
-         $this->redirect('/admin.php/User/index');
+         $this->redirect('/admin.php/User/login');
      }
 
 

@@ -5,7 +5,7 @@
         <div class="layui-inline">
             <label class="layui-form-label"></label>
             <div class="layui-input-inline">
-                <input id="keyword" type="text" autocomplete="off" name="keyword" placeholder="搜索关键字"
+                <input id="keyword" type="text" autocomplete="off" name="keyword" placeholder="搜索人才名称"
                        class="layui-input">
             </div>
         </div>
@@ -126,7 +126,7 @@
 
 
     function randerList(dataList) {
-        if (dataList.data && dataList.data.length > 0) {
+        // if (dataList.data && dataList.data.length > 0) {
             var temple = ''
             $.each(dataList.data, function (i, data) {
                 temple += '' +
@@ -149,7 +149,7 @@
                     '</tr>'
             })
             $('#phoneList').html(temple)
-        }
+        // }
     }
 
     function doDelete(id) {

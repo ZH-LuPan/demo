@@ -46,7 +46,25 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">技术介绍</label>
                 <div class="layui-input-block">
-                    <textarea style="height: 250px" name="description" placeholder="请输入技术介绍" class="layui-textarea">{$info.description}</textarea>
+                    <textarea style="height: 200px" name="description" placeholder="请输入技术介绍" class="layui-textarea">{$info.description}</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">产品性能优势</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 200px" name="advantage" placeholder="请输入产品性能优势" class="layui-textarea">{$info.advantage}</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">市场前景与优势</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 200px" name="marketplace" placeholder="请输入市场前景与优势" class="layui-textarea">{$info.marketplace}</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">技术成熟度</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 200px" name="maturity" placeholder="请输入技术成熟度" class="layui-textarea">{$info.maturity}</textarea>
                 </div>
             </div>
         </div>
@@ -71,6 +89,9 @@
             'second_cate':$('input[name="second_cate"]').val(),
             'third_cate':$('input[name="third_cate"]').val(),
             'type':$('input[name="type"]').val(),
+            'advantage':$('textarea[name="advantage"]').val(),
+            'marketplace':$('textarea[name="marketplace"]').val(),
+            'maturity':$('textarea[name="maturity"]').val(),
             'description':$('textarea[name="description"]').val()
         }
         var url = $('#editUrl').val()

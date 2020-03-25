@@ -67,7 +67,7 @@ class Skill extends Base
             if($paramArr['searchType'] == 2){    //搜索描述
                 isset($paramArr['keyword']) && $where .= "and  description like ". "'%".$paramArr['keyword']."%'";
             }
-            return Db::name('skill')->where($where)->order('name','asc')->paginate(10)->toArray();
+            return Db::name('skill')->where($where)->order('id')->paginate(10)->toArray();
         }catch (\Exception $exception){
             return ReturnCode::returnCode(500);
         }

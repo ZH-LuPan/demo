@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-    <title>Home</title>
+    <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
     <meta name="keywords" content=""/>
@@ -12,45 +12,46 @@
 </head>
 
 <body>
-<section class="about py-5" id="about">
+<!-- <section class="stats py-lg-5 py-4" id="stats" style="height: 30px;">     -->
+<div style="height: 90px;margin-top: 0px;">
+    <a href="/index.php"><img src="__PUBLIC__/static/index/images/home.jpg" style="width:500px;height:70px"/></a>
+    <a href="{$adminUrl}" style="float: right;margin-top: 45px;padding-right: 25px;"><b>个人管理</b></a>
+</div>
+<!-- </section> -->
+<div class="layui-carousel" id="banners">
+    <div carousel-item>
+        <img src="__PUBLIC__/static/index/images/banner1.jpg">
+        <img src="__PUBLIC__/static/index/images/banner2.jpg">
+    </div>
+</div>
+
+<section class="about py-5" id="about" style="margin-top: -56px;">
     <div class="container">
         <div class="inner-sec-w3ls-pyt py-lg-5 py-3">
-            <div class="input-group">
-                <div id="searchType">
-                    <select name="searchType" class="form-control" style="width: 150px">
-                        <option value="1">技术名称</option>
-                        <option value="3">技术介绍</option>
-                        <option value="2">专家名称</option>
-                    </select>
-                </div>&nbsp;
-                <input type="text" id="keyword" name="keyword" autocomplete="off" class="form-control"
-                       placeholder="请输入关键字" oninput="if(this.value==''){this.type='text'}">
-            </div>
             <div class="feature-grids row mt-3 mb-lg-5 mb-3 text-center">
-                <div class="col-lg-4" id="index" style="float: left" onclick="window.location.reload()">
-                    <div class="bottom-gd2-active px-3">
-                        <span class="fa fa-cogs" aria-hidden="true"></span>
-                        <h3 class="my-4">首页</h3>
-                    </div>
-                </div>
                 <div class="col-lg-4" id="skill">
-                    <a>
-                    <div class="bottom-gd px-3">
+                    <div class="bottom-gd2 px-3" style="height: 190px;background-color: grey">
                         <span class="fa fa-cogs" aria-hidden="true"></span>
-                        <h3 class="my-4">技术库</h3>
-                    </div>
-                    </a>
-                </div>
-                <div class="col-lg-4" id="talent">
-                    <div class="bottom-gd2-active px-3">
-                        <span class="fa fa-cogs" aria-hidden="true"></span>
-                        <h3 class="my-4">专家库</h3>
+                        <h3 class="my-4"><b>技术库</b></h3>
                     </div>
                 </div>
-                <div class="col-lg-4" id="aboutUs">
+
+                <div class="col-lg-4" id="talent" style="height: 190px;background-color: grey">
                     <div class="bottom-gd px-3">
                         <span class="fa fa-cogs" aria-hidden="true"></span>
-                        <h3 class="my-4">联系我们</h3>
+                        <h3 class="my-4"><b>专家库</b></h3>
+                    </div>
+                </div>
+                <div class="col-lg-4" id="qiye">
+                    <div class="bottom-gd2 px-3" style="height: 190px;background-color: grey">
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                        <h3 class="my-4"><b>企业库</b></h3>
+                    </div>
+                </div>
+                <div class="col-lg-4" id="zhengce">
+                    <div class="bottom-gd px-3" style="height: 190px;background-color: grey">
+                        <span class="fa fa-cogs" aria-hidden="true"></span>
+                        <h3 class="my-4"><b>政策库</b></h3>
                     </div>
                 </div>
             </div>
@@ -59,24 +60,16 @@
     </div>
 </section>
 <section class="contact py-5" id="contact" style="background-color: white;margin-top: -170px">
-    <div class="container py-lg-5">
-        <table class="table table-hover">
+    <div class="container py-lg-5" style="margin-top: -50px;margin-bottom: -50px">
+        <table class="table table-hover" id="tableContent">
             <thead id="tableHead">
-            <div class="layui-carousel" id="bannerBox" style="float: left;">
-                <div carousel-item>
-                    <div><img src="__PUBLIC__/static/index/images/banner1.jpg" style="width: 100%;height: 100%"/></div>
-                    <div><img src="__PUBLIC__/static/index/images/timg.jpg" style="width: 100%;height: 100%"/></div>
+            <div id="bannerBox" style="float: left;height:600px;width: 49%">
+                <div><img src="__PUBLIC__/static/index/images/timg.jpg" style="width: 100%;height: 100%"/>
                 </div>
             </div>
             <div id="loginBox">
-                <div style="width: 49%;height: 350px;background-color: #e2e2e2; float: right; ">
-                    <div style="margin:0 auto; width:300px;height:100px;vertical-align:middle;margin-top: 60px">
-                        <input type="text" name="username" style="width: 200px" required lay-verify="required"
-                               placeholder="请输入密码" autocomplete="off" class="layui-input"><br />
-                        <input type="password" name="password" style="width: 200px" required lay-verify="required" placeholder="请输入密码"
-                               autocomplete="off" class="layui-input"><br />
-                        <button class="layui-btn" id="loginBtn" lay-submit lay-filter="formDemo">登录</button>
-                    </div>
+                <div style="width: 49%;height: 350px; float: right; color: gray;line-height: 35px">
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;广东顺德西安交通大学研究院由西安交通大学、广东省科技厅、顺德区人民政府三方本着“优势互补、互利互惠、长期合作、共同发展”的原则共同组建，并于2011年3月7日在广东顺德正式登记注册为事业法人。研究院旨在依托西安交通大学在新能源、先进制造、高端电子信息、新材料等学科领域具有的人才、技术和科研成果等方面有时，集聚各方面资源，结合顺德产业分布特点，围绕当地经济、产业、社会的发展需求，重点在高端装备制造、节能环保、高端电子信息、新材料等领域开展技术创新、人才培养、成果转化服务。通过科技研发与产品中试、技术成果转移转化、存量人才知识结构更新与能力提升，建成国内一流的集科技创新服务、人才培养及成果转化孵化服务等功能于一体的新型研发机构。</div>
                 </div>
             </div>
             </thead>
@@ -86,35 +79,34 @@
         </table>
         <div id="pages"></div>
     </div>
-    <input type="hidden" value="{$getSkill}" id="getSkill" />
-    <input type="hidden" value="{$getDetail}" id="detail" />
+    <input type="hidden" value="{$getSkill}" id="getSkill"/>
+    <input type="hidden" value="{$getDetail}" id="detail"/>
+    <input type="hidden" value="{$skillUrl}" id="skillUrl"/>
+    <input type="hidden" value="{$talentUrl}" id="talentUrl"/>
+    <input type="hidden" value="{$priseUrl}" id="priseUrl"/>
+    <input type="hidden" value="{$policyUrl}" id="policyUrl"/>
+</section>
+
+<section class="contact py-5" id="contact"
+         style="text-align: center;height:40px;position:fixed;bottom:0;left:0;width: 100%">
+    <p class="mb-3">广东顺德西安交通大学研究院</p>
 </section>
 <script src="__PUBLIC__/assets/layui/layui.all.js"></script>
 <script src="__PUBLIC__/static/admin/js/jquery.min.js"></script>
 <script src="__PUBLIC__/static/index/js/list.js"></script>
 <script>
-    layui.use('carousel', function () {
-        var carousel = layui.carousel;
-        //建造实例
-        carousel.render({
-            elem: '#bannerBox'
-            , width: '49%' //设置容器宽度,
-            , height: '350px'
-            , arrow: 'always' //始终显示箭头
-        });
-    });
-    
-    $('#loginBtn').on('click',function () {
+
+    $('#loginBtn').on('click', function () {
         var url = $('#loginUrl').val()
         var sendData = {
-            'account' : $('input[name="username"]').val(),
-            'password' : $('input[name="password"]').val()
+            'account': $('input[name="username"]').val(),
+            'password': $('input[name="password"]').val()
         }
-        $.post('/demo/admin.php/User/login',sendData,function (res) {
-            if(res.code == 200){
+        $.post('/admin.php/User/login', sendData, function (res) {
+            if (res.code == 200) {
                 window.location.href = res.data;
-            }else{
-                layer.msg(res.msg,{icon: 2, time: 1000});
+            } else {
+                layer.msg(res.msg, {icon: 2, time: 1000});
             }
         })
     })

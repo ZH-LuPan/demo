@@ -1,0 +1,162 @@
+{extend name="layout/base" /} {block name="main"}
+<div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <div class="layui-inline">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <input id="keyword" type="text" autocomplete="off" name="keyword" placeholder="请输入关键字"
+                       class="layui-input">
+            </div>
+        </div>
+        <a id="searchBtn" class="layui-btn layui-btn-warm">搜索</a>
+        <button type="button" class="layui-btn" id="test1" style="float: right">
+            <i class="layui-icon">&#xe67c;</i>导入政策
+        </button>
+        <table class="layui-table">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th width="5%">序号</th>
+                <th width="5%">行政区域</th>
+                <th width="26%">政策</th>
+                <th width="11%">操作</th>
+            </tr>
+            </thead>
+            <tbody id="phoneList">
+            </tbody>
+        </table>
+        <div id="pages"></div>
+        <input type="hidden" id="exportUrl" value="{$exportUrl}">
+        <input type="hidden" id="getUrl" value="{$getUrl}">
+        <input type="hidden" id="delUrl" value="{$delUrl}">
+    </div>
+</div>
+<script>
+    layui.use('upload', function () {
+        var upload = layui.upload;
+
+        //执行实例
+        var url = $('#exportUrl').val()
+        var uploadInst = upload.render({
+            elem: '#test1' //绑定元素
+            , url: url //上传接口
+            , done: function (res) {
+                if(res.code === 200){
+                    layer.msg(res.msg,{'icon':1})
+                    window.location.reload()
+                }else{
+                    layer.msg(res.msg,{'icon':2})
+                }
+            }
+            , error: function () {
+            }
+            , accept: 'file'
+        });
+    });
+</script>
+<script>
+
+    filePage = 1;
+    fileSize = 10;
+    count = {$count};
+
+    $(function () {
+        getList()
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage
+            laypage.render({
+                elem: 'pages',
+                count: count,
+                limit: fileSize,
+                curr: filePage,
+                jump: function (obj, first) {
+                    filePage = obj.curr;
+                    fileSize = obj.limit;
+                    if (!first) {
+                        getList()
+                    }
+                }
+            });
+        })
+    })
+
+    $("#searchBtn").on('click', function () {
+        var sendData = {
+            'keyword': keyword = $("#keyword").val(),
+            'page':filePage,
+            'size':fileSize
+        }
+        var url = $('#getUrl').val()
+        $.post(url, sendData , function (res) {
+            if(res.code){
+                layer.msg(res.msg,{'icon':2})
+                return false;
+            }
+            if (res) {
+                randerList(res)
+            }
+        })
+    })
+
+    function getList() {
+        var sendData = {
+            'keyword': keyword = $("#keyword").val(),
+            'page':filePage,
+            'size':fileSize
+        }
+        var url = $('#getUrl').val()
+        $.post(url, sendData, function (dataList) {
+            if (dataList) {
+                randerList(dataList)
+                count = dataList.total;
+            }
+        })
+    }
+
+    function randerList(dataList) {
+        // if (dataList.data && dataList.data.length > 0) {
+            var temple = ''
+            $.each(dataList.data, function (i, data) {
+                temple += '' +
+                    '<tr>' +
+                    '<td width="5%" class="phone_id">' + data.id + '</td>' +
+                    '<td> ' + data.address + '</td>' +
+                    '<td> ' + data.name + '</td>' +
+                    '<td> ' +
+                    '<div>' +
+                    '<a href="/admin.php/Policy/edit?id='+data.id+'" class="layui-btn editBtn">修改</a>' +
+                    '<a onclick="doDelete('+data.id+')"   class="layui-btn layui-btn-danger delBtn">删除</a>' +
+                    '</div>' +
+                    '</td>' +
+                    '</tr>'
+            })
+            $('#phoneList').html(temple)
+        // }
+    }
+
+    // function doEdit(obj) {
+    //     var This = obj;
+    //     var sendData = {
+    //         'id': This.parents('tr').find('.phone_id').html()
+    //     }
+    //     $.post('/admin.php/Skill/edit', sendData, function (res) {
+    //         layer.msg(res.msg);
+    //     })
+    // }
+
+    function doDelete(id) {
+        var url = $('#delUrl').val()
+        $.post(url, {'id': id}, function (res) {
+            layer.msg(res.msg);
+            getList();
+        })
+    }
+
+</script>
+{/block}
+{block name="footer"}{/block}

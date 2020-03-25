@@ -57,8 +57,9 @@ class Talent extends Base
     {
         try{
             $where = 'status = 1 ';
+
             isset($paramArr['keyword']) && $where .= "and  name like ". "'%".$paramArr['keyword']."%'";
-            return Db::name('talent')->order('name')->where($where)->paginate(10)->toArray();
+            return Db::name('talent')->orderRaw("convert(`name` using gbk) asc")->where($where)->paginate(10)->toArray();
         }catch (\Exception $exception){
             return ReturnCode::returnCode(500);
         }

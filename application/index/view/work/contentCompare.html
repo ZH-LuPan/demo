@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <title>内容比较</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="__PUBLIC__/assets/layui/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/layui/layui.all.js">
+    <script src="__ADMIN_STATIC__/js/jquery.min.js"></script>
+    <style>
+        div{
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+        <div></div>
+        <div class="layui-input-block">
+            <label class="layui-form-label">内容一</label>
+            <textarea style="width: 200px;height: 700px" name="one" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+
+        <div class="layui-input-block">
+            <label class="layui-form-label">内容二</label>
+            <textarea style="width: 200px;height: 700px" name="two" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+
+            <div class="layui-input-block" >
+            <button id="beginBtn" style="margin-top: 400px" class="layui-btn">开始比较</button>
+            </div>
+
+
+        <div class="layui-input-block">
+            <label class="layui-form-label">结果</label>
+            <textarea style="width: 200px;height: 700px" name="result" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+<input type="hidden" id="apiUrl" value="{$apiUrl}">
+</body>
+<script>
+
+    $('#beginBtn').on('click',function () {
+        var url = $('#apiUrl').val();
+        var sendData = {
+            'one':$('textarea[name="one"]').val(),
+            'two':$('textarea[name="two"]').val(),
+        }
+        $.post(url,sendData,function(res){
+            if(res.code === 200){
+                var data = res.data
+                $('textarea[name="result"]').val(data)
+            }else{
+                layer.msg(res.data,{'icon':2})
+            }
+        });
+
+    })
+
+</script>
+</html>

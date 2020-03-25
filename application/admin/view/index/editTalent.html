@@ -51,6 +51,32 @@
                     <input type="text" name="email" required value="{$info.email}" placeholder="请输入Email" autocomplete="off" class="layui-input">
                 </div>
             </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">申报项目</label>
+                <div class="layui-input-block">
+                    <input type="text" name="declare" required value="{$info.declare}" placeholder="请输入申报项目" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">论文</label>
+                <div class="layui-input-block">
+                    <input type="text" name="paper" required value="{$info.paper}" placeholder="请输入论文" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">专利</label>
+                <div class="layui-input-block">
+                    <input type="text" name="patent" required value="{$info.patent}" placeholder="请输入专利" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">科研项目</label>
+                <div class="layui-input-block">
+                    <input type="text" name="research_project" required value="{$info.research_project}" placeholder="请输入科研项目" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
@@ -73,7 +99,11 @@
             'second_part':$('input[name="second_part"]').val(),
             'third_part':$('input[name="third_part"]').val(),
             'subject_name':$('input[name="subject_name"]').val(),
-            'email':$('input[name="email"]').val()
+            'email':$('input[name="email"]').val(),
+            'declare':$('input[name="declare"]').val(),
+            'paper':$('input[name="paper"]').val(),
+            'patent':$('input[name="patent"]').val(),
+            'research_project':$('input[name="research_project"]').val()
         }
         var url = $('#editUrl').val()
         $.post(url,sendData,function(res){

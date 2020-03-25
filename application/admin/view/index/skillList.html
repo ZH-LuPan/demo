@@ -133,7 +133,7 @@
     }
 
     function randerList(dataList) {
-        if (dataList.data && dataList.data.length > 0) {
+        // if (dataList.data && dataList.data.length > 0) {
             var temple = ''
             $.each(dataList.data, function (i, data) {
                 temple += '' +
@@ -156,7 +156,7 @@
                     '</tr>'
             })
             $('#phoneList').html(temple)
-        }
+        // }
     }
 
     // function doEdit(obj) {

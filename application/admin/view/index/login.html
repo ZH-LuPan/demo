@@ -1,31 +1,42 @@
 {extend name="layout/passport" /} {block name="main"}
-<!--<script src="__ADMIN_STATIC__/css/login.css"></script>-->
 <div class="tpl-login">
+    <div style="height: 90px;margin-top: 0px;width: 100%;background-color: #fff">
+        <a href="/index.php"><img src="__PUBLIC__/static/index/images/home.jpg" style="width:500px;height:70px"/></a>
+    </div>
     <div class="tpl-login-content">
-        <div class="tpl-login-logo">
+        <div style="float: left">
+            <div class="" style="margin-bottom: 25px;color: #335473;">
+                <span style="text-align: center;font-size: 30px;margin-left: 60px;"><b>信息查询系统登录</b></span>
+            </div>
+            <div style="width: 449px;height: 300px;background-color: #335473;">
+                <form class="am-form" method="post" data-am-validator style="padding-left:30px;padding-top: 40px;color: white;font-size: 20px">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><strong>账  号 :</strong></label>
+                        <div class="layui-input-inline">
+                            <input type="tel" name="account" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><strong>密  码 :</strong></label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="password" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="am-form-group" style="margin-left: 120px">
+                        <button id="btn" type="button" style="background-color: yellow;color: #335473;font-size: 20px" class="layui-btn layui-btn-normal"><b>登  陆</b></button>
+                        <input id="loginUrl" type="hidden" value="{$loginUrl}" />
+                    </div>
+                </form>
+            </div>
         </div>
-        <form class="am-form tpl-form-line-form" method="post" data-am-validator>
-            <div class="layui-inline">
-                <label class="layui-form-label">账号</label>
-                <div class="layui-input-inline">
-                    <input type="tel" name="account" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <br />
-            <br />
-            <div class="layui-inline">
-                <label class="layui-form-label">密码</label>
-                <div class="layui-input-inline">
-                    <input type="password" name="password" autocomplete="off" class="layui-input">
-                </div>
-            </div>
-            <br />
-            <br />
-            <div class="am-form-group" align="center">
-                <button id="btn" type="button" class="layui-btn layui-btn-normal">登陆</button>
-                <input id="loginUrl" type="hidden" value="{$loginUrl}" />
-            </div>
-        </form>
+        <div style="float: left">
+            <img style="width: 700px;" src="__PUBLIC__/static/index/images/banner2.jpg" alt="">
+        </div>
+        <div style="clear: both;"></div>
     </div>
 </div>
 <script>

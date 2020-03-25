@@ -1,0 +1,49 @@
+{extend name="layout/base" /} {block name="main"}
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">公司名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="company" required value="{$info.name}"  placeholder="请输入公司名称" autocomplete="off" class="layui-input" style="width: 300px">
+                </div><br />
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">公司简介</label>
+                <div class="layui-input-block">
+                    <textarea style="height: 200px" name="description" placeholder="请输入公司简介" class="layui-textarea">{$info.description}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn">立即提交</button>
+                <input type="hidden" name="id" value="{$info.id}">
+                <input type="hidden" id="editUrl" value="{$editUrl}">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('.layui-btn').on('click',function () {
+        var sendData = {
+            'id':$('input[name="id"]').val(),
+            'name': $('input[name="company"]').val(),
+            'description':$('textarea[name="description"]').val()
+        }
+        var url = $('#editUrl').val()
+        $.post(url,sendData,function(res){
+            if(res.code === 200){
+                layer.msg(res.msg)
+                history.go(-1)
+            }else{
+                layer.msg(res.msg)
+            }
+
+        });
+    })
+</script>
+
+{/block}

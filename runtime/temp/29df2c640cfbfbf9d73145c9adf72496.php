@@ -1,4 +1,4 @@
-<?php /*a:7:{s:76:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\skillList.html";i:1569727323;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1566308938;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1569305954;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1566305884;}*/ ?>
+<?php /*a:7:{s:76:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\index\skillList.html";i:1572398922;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\base.html";i:1566305556;s:72:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\meta.html";i:1571722884;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-header.html";i:1572271874;s:78:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\widget\admin-left.html";i:1566221962;s:80:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\admin-footer.html";i:1566219026;s:74:"D:\phpStudy\PHPTutorial\WWW\demo\application\admin\view\layout\footer.html";i:1571722876;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +44,7 @@ var adminApp = {
             <a href=""><img src="//t.cn/RCzsdCq" class="layui-nav-img"><?php echo htmlentities(app('cookie')->get('name')); ?></a>
             <dl class="layui-nav-child">
                 <dd><a href="/admin.php/User/logout">注   销</a></dd>
+                <dd><a href="/index.php">首   页</a></dd>
             </dl>
         </li>
     </ul>
@@ -205,7 +206,7 @@ var adminApp = {
     }
 
     function randerList(dataList) {
-        if (dataList.data && dataList.data.length > 0) {
+        // if (dataList.data && dataList.data.length > 0) {
             var temple = ''
             $.each(dataList.data, function (i, data) {
                 temple += '' +
@@ -228,7 +229,7 @@ var adminApp = {
                     '</tr>'
             })
             $('#phoneList').html(temple)
-        }
+        // }
     }
 
     // function doEdit(obj) {

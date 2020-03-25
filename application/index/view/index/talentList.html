@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <title>人才库</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <link rel="stylesheet" href="__PUBLIC__/static/index/css/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/assets/layui/css/layui.css">
+    <link rel="stylesheet" href="__PUBLIC__/static/index/css/style.css" type="text/css" media="all"/>
+    <link href="__PUBLIC__/static/index/css/font-awesome.css" rel="stylesheet">
+    <style type="text/css">
+        .col-lg-4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+            max-width: 20.000000%;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 90px;margin-top: 0px;">
+    <a href="/index.php"><img src="__PUBLIC__/static/index/images/home.jpg" style="width:500px;height:70px"/></a>
+    <a href="{$adminUrl}" style="float: right;margin-top: 45px;padding-right: 25px;"><b>个人管理</b></a>
+</div>
+<section class="about py-5" id="about" style="margin-top: -56px;">
+    <div class="container">
+        <div class="inner-sec-w3ls-pyt py-lg-5 py-3">
+            <div class="input-group">
+
+                <div id="searchType">
+                    <select name="searchType" class="form-control" style="width: 150px">
+                        <option value="4">专家名称</option>
+                        <option value="5">研究项目</option>
+                    </select>
+                </div>&nbsp;
+                <input type="text" id="keyword" name="keyword" autocomplete="off" class="form-control"
+                       placeholder="请输入关键字" oninput="if(this.value==''){this.type='text'}">&nbsp;
+                <button id="searchBtn" type="button" class="layui-btn layui-btn-primary" style="background-color: #E2E2E2">搜索</button>&nbsp;
+                <div id="">
+                    <select name="level" class="form-control" style="width: 160px">
+                        <option value="">请选择技术领域</option>
+                        <optgroup label="电子信息">
+                            <option value="软件">软件</option>
+                            <option value="微电子技术">微电子技术</option>
+                            <option value="计算机产品及其网络应用技术">计算机产品及其网络应用技术</option>
+                            <option value="通信技术">通信技术</option>
+                            <option value="广播影视技术">广播影视技术</option>
+                            <option value="新型电子元器件">新型电子元器件</option>
+                            <option value="信息安全技术">信息安全技术</option>
+                        </optgroup>
+                        <optgroup label="生物与新医药">
+                            <option value="医药生物技术">医药生物技术</option>
+                            <option value="中药、天然药物">中药、天然药物</option>
+                            <option value="药物新剂型与制剂创制技术">药物新剂型与制剂创制技术</option>
+                            <option value="医疗仪器、设备与医学专用软件">医疗仪器、设备与医学专用软件</option>
+                            <option value="轻工和化工生物技术">轻工和化工生物技术</option>
+                            <option value="农业生物技术">农业生物技术</option>
+                        </optgroup>
+                        <optgroup label="航空航天">
+                            <option value="航空技术">航空技术</option>
+                            <option value="航天技术">航天技术</option>
+                        </optgroup>
+                        <optgroup label="新材料">
+                            <option value="金属材料">金属材料</option>
+                            <option value="无机非金属材料">无机非金属材料</option>
+                            <option value="高分子材料">高分子材料</option>
+                            <option value="精细和专用化学品">精细和专用化学品</option>
+                            <option value="与文化艺术产业相关的新材料">与文化艺术产业相关的新材料</option>
+                        </optgroup>
+                        <optgroup label="新能源与节能 ">
+                            <option value="可再生清洁能源">可再生清洁能源</option>
+                            <option value="核能及氢能">核能及氢能</option>
+                            <option value="新型高效能量转换与储存技术">新型高效能量转换与储存技术</option>
+                            <option value="高效节能技术">高效节能技术</option>
+                        </optgroup>
+                        <optgroup label="资源与环境">
+                            <option value="水污染控制与水资源利用技术">水污染控制与水资源利用技术</option>
+                            <option value="大气污染控制技术">大气污染控制技术</option>
+                            <option value="固体废弃物处置与综合利用技术">固体废弃物处置与综合利用技术</option>
+                            <option value="物理性污染防治技术">物理性污染防治技术</option>
+                            <option value="环境监测及环境事故应急处理技术">环境监测及环境事故应急处理技术</option>
+                            <option value="生态环境建设与保护技术">生态环境建设与保护技术</option>
+                            <option value="清洁生产技术">清洁生产技术</option>
+                            <option value="资源勘查、高效开采与综合利用技术">资源勘查、高效开采与综合利用技术</option>
+                        </optgroup>
+                        <optgroup label="先进制造与自动化">
+                            <option value="工业生产过程控制系统">工业生产过程控制系统</option>
+                            <option value="安全生产技术">安全生产技术</option>
+                            <option value="高性能、智能化仪器仪表">高性能、智能化仪器仪表</option>
+                            <option value="先进制造工艺与装备">先进制造工艺与装备</option>
+                            <option value="新型机械">新型机械</option>
+                            <option value="电力系统与设备">电力系统与设备</option>
+                            <option value="汽车及轨道车辆相关技术">汽车及轨道车辆相关技术</option>
+                            <option value="高技术船舶与海洋工程装备设计制造技术">高技术船舶与海洋工程装备设计制造技术</option>
+                            <option value="传统文化产业改造技术">传统文化产业改造技术</option>
+                        </optgroup>
+                        <optgroup label="高技术服务">
+                            <option value="研发与设计服务">研发与设计服务</option>
+                            <option value="高技术专业化服务">高技术专业化服务</option>
+                            <option value="知识产权与成果转化服务">知识产权与成果转化服务</option>
+                            <option value="电子商务与现代物流技术">电子商务与现代物流技术</option>
+                            <option value="城市管理与社会服务">城市管理与社会服务</option>
+                            <option value="文化创意产业支撑技术">文化创意产业支撑技术</option>
+                        </optgroup>
+                    </select>
+                </div>&nbsp;
+            </div>
+            <div class="feature-grids row mt-3 mb-lg-5 mb-3 text-center">
+
+                <div class="col-lg-4" id="index">
+                    <div class="bottom-gd2 px-3" style="height: 60px;background-color: #191970">
+                        <h3 class="my-4"><b style="color: #fff">首页</b></h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="skill">
+                    <div class="bottom-gd2 px-3" style="height: 60px;background-color:#191970">
+                        <h3 class="my-4"><b style="color: #fff">技术库</b></h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="talent">
+                    <div class="bottom-gd2 px-3" style="height: 60px;background-color:#183550">
+                        <h3 class="my-4"><b style="color: #fff">专家库</b></h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" id="qiye">
+                    <div class="bottom-gd2 px-3" style="height: 60px;background-color:#191970">
+                        <h3 class="my-4"><b style="color: #fff">企业库</b></h3>
+                    </div>
+                </div>
+                <div class="col-lg-4" id="zhengce">
+                    <div class="bottom-gd2 px-3" style="height: 60px;background-color:#191970">
+                        <h3 class="my-4"><b style="color: #fff">政策库</b></h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <input type="hidden" value="{$skillUrl}" id="skillUrl"/>
+        <input type="hidden" value="{$talentUrl}" id="talentUrl"/>
+        <input type="hidden" value="{$getDetail}" id="detail"/>
+        <input type="hidden" value="{$indexUrl}" id="indexUrl"/>
+        <input type="hidden" value="{$priseUrl}" id="priseUrl" />
+        <input type="hidden" value="{$policyUrl}" id="policyUrl" />
+
+    </div>
+    </div>
+</section>
+<section class="contact py-5" id="contact" style="background-color: white;margin-top: -170px">
+    <div class="container py-lg-5" style="margin-top: -50px;margin-bottom: -50px">
+        <table class="table table-hover" id="tableContent">
+            <thead id="tableHead">
+            <tr style="background-color: #e2e2e2;">
+                <td width="5%">序号</td>
+                <!--<td>一级领域</td>-->
+                <!--<td>二级领域</td>-->
+                <!--<td>三级领域</td>-->
+                <td>姓名</td>
+                <td>职称</td>
+                <td>学院</td>
+                <td>专业</td>
+                <td>邮箱</td>
+                <td>研究项目</td>
+            </tr>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+        <div id="pages"></div>
+    </div>
+</section>
+
+<section class="contact py-5" id="contact" style="text-align: center;height:40px">
+    <p class="mb-3">广东顺德西安交通大学研究院</p>
+</section>
+<script src="__PUBLIC__/assets/layui/layui.all.js"></script>
+<script src="__PUBLIC__/static/admin/js/jquery.min.js"></script>
+<script src="__PUBLIC__/static/index/js/list.js"></script>
+<script>
+
+    filePage = 1;
+    fileSize = 10;
+    count = {$count};
+    $(function () {
+        var sendData = {
+            'page': filePage,
+            'size': fileSize,
+            'type': 'talent',
+            'searchType': $("select[name='searchType']").val(),
+            'level': $("select[name='level']").val(),
+            'keyword': $("input[name='keyword']").val()
+        }
+
+        renderPage(sendData, 'talent');
+        getList(sendData, 'talent')
+    })
+
+    /**
+     * 列表渲染
+     * @param dataList
+     * @param type
+     */
+    function randerList(dataList, type) {
+        var temple = ''
+        $.each(dataList.data, function (i, data) {
+            temple += '' +
+                '<tr>' +
+                '<td width="5%">' + data.indexId + '</td>' +
+                // '<td width="8%"> ' + data.first_part + '</td>' +
+                // '<td width="8%"> ' + data.second_part + '</td>' +
+                // '<td width="8%"> ' + data.third_part + '</td>' +
+                '<td width="7%" data-id="' + data.id + '" data-type="talent" data-title="' + data.name + '" onclick="getDetail($(this));">' + data.name + '</td>' +
+                '<td> ' + data.job_name + '</td>' +
+                '<td width="12%">' + data.school_name + '</td>' +
+                '<td>' + data.subject_name + '</td>' +
+                '<td>' + data.email + '</td>' +
+                '<td data-id="' + data.id + '" data-type="skill" data-title="' + data.subject_part + '" onclick="getDetail($(this));">' + data.subject_part + '</td>' +
+                '<td> ' +
+                '</td>' +
+                '</tr>'
+        })
+        $('#list').html(temple)
+    }
+</script>
+</body>
+</html>

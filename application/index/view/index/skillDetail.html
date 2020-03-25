@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
+            font-size: 14px;
+            line-height:5px;
         }
         .fix {
             display: flex;
@@ -19,37 +21,55 @@
 </head>
 <body>
     <div class="fix" style="border-bottom:none">
-        <div style="height: 200px;width: 150px;border-right:1px solid;text-align: center;line-height: 200px">(照片)</div>
-        <div style="flex: 1;padding: 10px;text-align: left;">基本信息</div>
+        <div style="height: 40px;width: 650px;text-align: center;line-height: 40px">{$info.first_cate} {$info.second_cate} {$info.third_cate}</div>
     </div>
     <div class="fix" style="border-bottom:none">
-        <div style="height: 100px;width: 150px;border-right:1px solid;line-height: 100px;">联系方式</div>
-        <div></div>
+        <div style="height: 40px;width: 150px;border-right:1px solid;line-height: 40px;">技术名称</div>
+        <div style="line-height: 40px;">{$info.name}</div>
+    </div>
+    <div class="fix" style="border-bottom:none;float: le">
+        <div style="height: 40px;width: 150px;border-right:1px solid;line-height: 40px;">负责人</div>
+        <div style="line-height: 40px;">{$info.leader}</div>
     </div>
     <div class="fix" style="border-bottom:none">
-        <div style="height: 100px;width: 150px;border-right:1px solid;line-height: 100px;">（拟）申报项目</div>
-        <div></div>
+        <div style="height: 40px;width: 150px;border-right:1px solid;line-height: 40px;">所在学校</div>
+        <div style="line-height: 40px;">{$info.school_name}</div>
     </div>
     <div class="fix" style="border-bottom:none">
-        <div style="height: 100px;width: 150px;border-right:1px solid;line-height: 100px;">研究领域</div>
-        <div></div>
+        <div style="height: 40px;width: 150px;line-height: 40px;">一、项目介绍</div>
     </div>
-    <div class="fix">
-        <div style="height: 180px;width: 150px;border-right:1px solid;line-height: 180px;">科研成果</div>
-        <div style="min-width:calc(100% - 151px);">
-            <div class="fix" style="border:none;">
-                <div style="height: 60px;width: 100px;border-right:1px solid;border-bottom: 1px solid;line-height: 60px;">论文</div>
-                <div style="flex: 1;width:100%;border-bottom: 1px solid;"></div>
-            </div>
-            <div class="fix" style="border:none;">
-                <div style="height: 60px;width: 100px;border-right:1px solid;border-bottom: 1px solid;line-height: 60px;">专利</div>
-                <div style="flex: 1;width:100%;border-bottom: 1px solid;"></div>
-            </div>
-            <div class="fix" style="border: none">
-                <div style="height: 60px;width: 100px;border-right:1px solid;line-height: 60px;">科研项目</div>
-                <div style="flex: 1;width:100%;"></div>
-            </div>
-        </div>
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 140px;width: 650px;line-height: 20px;">{$info.description}</div>
+    </div>
+
+
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 40px;width: 150px;line-height: 40px;">二、产品性能优势</div>
+    </div>
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 130px;width: 650px;line-height: 40px;">{$info.advantage}</div>
+    </div>
+
+
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 40px;width: 150px;line-height: 40px;">三、市场前景及应用</div>
+    </div>
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 130px;width: 650px;line-height: 40px;">{$info.marketplace}</div>
+    </div>
+
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 40px;width: 150px;line-height: 40px;">四、技术成熟度</div>
+    </div>
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 130px;width: 650px;line-height: 40px;">{$info.maturity}</div>
+    </div>
+
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 40px;width: 150px;line-height: 40px;">五、合作方式</div>
+    </div>
+    <div class="fix" style="border-bottom:none">
+        <div style="height: 130px;width: 650px;line-height: 40px;">{$info.type}</div>
     </div>
 </body>
 </html>

@@ -1,0 +1,31 @@
+{extend name="layout/base" /} {block name="main"}
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">手机号码</label>
+            <div class="layui-input-block">
+                <textarea name="phone" placeholder='' class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn">立即提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.layui-btn').on('click',function () {
+        var sendData = {
+            'phone':$('textarea[name="phone"]').val(),
+        }
+        $.post('/admin.php/Mobile/addMobile',sendData,function(res){
+            $('textarea[name="phone"]').val('')
+            layer.msg(res.msg)
+        });
+    })
+</script>
+
+{/block}

@@ -11,6 +11,7 @@ namespace app\admin\model;
 
 use app\common\classes\ReturnCode;
 use think\Db;
+use think\facade\Url;
 
 
 class User extends Base
@@ -40,7 +41,7 @@ class User extends Base
         cookie('uid',$user['id'],$expire);
         cookie('type',$user['is_admin'],$expire);
         cookie('name',$user['name'],$expire);
-        return ReturnCode::returnCode(200,'登陆成功',url('User/uList'));
+        return ReturnCode::returnCode(200,'登陆成功','http://'.$_SERVER['SERVER_NAME'].'/index.php');
     }
 
 

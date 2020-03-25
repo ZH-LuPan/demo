@@ -83,24 +83,25 @@ class Talent extends Base
                         }
                     }
                     if (is_array($dataArr)) foreach ($dataArr as $key => $value) {
-                        if ($key <= 17) unset($dataArr[$key]);
+                        if ($key <= 21) unset($dataArr[$key]);
                     }
                     $nameList = $this->talentModel->findAll(['status' => 1], 'name');
-                    $newData = array_chunk(array_values($dataArr), 9);
+                    $newData = array_chunk(array_values($dataArr), 11);
                     if (is_array($newData)) foreach ($newData as $key => $value) {
-                        if (in_array(trim($value[4]), $nameList)) {
+                        if (in_array(trim($value[1]), $nameList)) {
                             unset($newData[$key]);
                             continue;
                         }
                         $newData[$key] = array(
-                            'name' => $value[4],
-                            'subject_name' => $value[7],
-                            'school_name' => $value[6],
-                            'job_name' => $value[5]?:'',
-                            'first_part' => $value[1]?:'',
-                            'second_part' => $value[2]?:'',
-                            'third_part' => $value[3]?:'',
-                            'email' => $value[8],
+                            'name' => $value[1],
+                            'subject_name' => $value[4],
+                            'school_name' => $value[3],
+                            'job_name' => $value[2]?:'',
+                            'first_part' => $value[8]?:'',
+                            'second_part' => $value[9]?:'',
+                            'third_part' => $value[10]?:'',
+                            'subject_part' => $value[6]?:'',
+                            'email' => $value[5],
                             'create_time' => time(),
                             'update_time' => time()
                         );
@@ -118,7 +119,6 @@ class Talent extends Base
         } catch (\Exception $exception) {
             return array('code' => 500, 'msg' => '系统异常');
         }
-
     }
 
 

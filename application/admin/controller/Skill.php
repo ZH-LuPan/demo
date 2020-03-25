@@ -87,29 +87,29 @@ class Skill extends Base
                         @unlink(str_replace('/','\\',$fileName));
                     }
                     if (is_array($dataArr)) foreach ($dataArr as $key => $value) {
-                        if ($key <= 26) unset($dataArr[$key]);
+                        if ($key <= 17) unset($dataArr[$key]);
                     }
                     $nameList = $this->skillModel->findAll(['status' => 1], 'name');
                     $newData = array_chunk(array_values($dataArr), 9);
                     if (is_array($newData)) foreach ($newData as $key => $value) {
-                        if (in_array(trim($value[4]), $nameList)){
+                        if (in_array(trim($value[1]), $nameList)){
                             unset($newData[$key]);
                             continue;
                         }
                         $newData[$key] = array(
-                            'name' => $value[4],
-                            'description' => $value[5],
-                            'leader' => $value[6],
-                            'school_name' => $value[7],
-                            'type' => $value[8],
-                            'first_cate' => $value[1],
-                            'second_cate' => $value[2],
-                            'third_cate' => $value[3],
+                            'name' => $value[1],
+                            'description' => $value[2],
+                            'leader' => $value[3],
+                            'school_name' => $value[4],
+                            'type' => $value[5],
+                            'first_cate' => $value[6],
+                            'second_cate' => $value[7],
+                            'third_cate' => $value[8],
+                            'talent_name' => $value[3],
                             'create_time' => time(),
                             'update_time' => time()
                         );
                     }
-
                     $result = Db::name('skill')->data(array_values($newData))->insertAll();
                     if (is_numeric($result)) {
                         return array('code' => 200, 'msg' => '操作成功');
