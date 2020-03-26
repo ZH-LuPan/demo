@@ -170,7 +170,7 @@ class Index extends Controller
             return array('code' => 200, 'data' => $result);
         }
         return $this->fetch('index/talentList', array(
-            'count' => Db::name('skill')->where('status', 1)->count(),
+            'count' => Db::name('talent')->where('status', 1)->count(),
             'skillUrl' => Url::build('Index/skillList'),
             'getDetail' => Url::build('Index/getDetail'),
             'talentUrl' => Url::build('Index/talentList'),

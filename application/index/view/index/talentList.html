@@ -185,6 +185,27 @@
     fileSize = 10;
     count = {$count};
     $(function () {
+        getList();
+        layui.use(['laypage', 'layer'], function () {
+            var laypage = layui.laypage
+            laypage.render({
+                elem: 'pages',
+                count: count,
+                limit: fileSize,
+                curr: filePage,
+                jump: function (obj, first) {
+                    filePage = obj.curr;
+                    fileSize = obj.limit;
+                    if (!first) {
+                        getList()
+                    }
+                }
+            });
+        })
+    })
+
+
+    function getList( type) {
         var sendData = {
             'page': filePage,
             'size': fileSize,
@@ -193,10 +214,15 @@
             'level': $("select[name='level']").val(),
             'keyword': $("input[name='keyword']").val()
         }
+        var url = $('#getSkill').val()
+        $.post(url, sendData, function (res) {
+            if (res) {
+                randerList(res.data, type);
+                count = res.data.total;
 
-        renderPage(sendData, 'talent');
-        getList(sendData, 'talent')
-    })
+            }
+        })
+    }
 
     /**
      * 列表渲染
